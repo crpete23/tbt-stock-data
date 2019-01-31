@@ -9,15 +9,17 @@ if (NODE_ENV === 'development') {
 app.use(require('body-parser').json())
 app.use(require('cors')())
 
+app.use('/api/applMonthlyData', require('./routes/applMonthlyData'))
+
 app.use('/', (req, res) => res.send({
   server:{
     name: 'Coding Challenge Server',
     apiVersion: '0.2'
   },
   availableDataSeries: {
-  IncreasingData: {
-    name: 'Increasing data values',
-    description: 'Numbers 1 to 5'
+  applMonthlyData: {
+    name: 'Monthly Apple Stock Data',
+    description: 'Apple stock closing price data for the last month'
   }
 }
 }))
