@@ -3,12 +3,24 @@ const app = express()
 const { PORT = 3200, NODE_ENV = 'development' } = process.env
 
 if (NODE_ENV === 'development') {
-  require('dotenv').load()
   app.use(require('morgan')('dev'))
 }
 
 app.use(require('body-parser').json())
 app.use(require('cors')())
+
+app.use('/', (req, res) => res.send({
+  server:{
+    name: 'Coding Challenge Server',
+    apiVersion: '0.2'
+  },
+  availableDataSeries: {
+  IncreasingData: {
+    name: 'Increasing data values',
+    description: 'Numbers 1 to 5'
+  }
+}
+}))
 
 app.use((req, res, next) => {
   const status = 404
