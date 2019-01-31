@@ -37,3 +37,7 @@ https://documenter.getpostman.com/view/4658545/RztmqU1B
 1. Fork and/or Clone this repository
 
 1. `npm install`
+
+## Running Dev Server
+
+1. `npm run dev`
