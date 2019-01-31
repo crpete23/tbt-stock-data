@@ -23,6 +23,12 @@
 | --- | --- | --- | --- |
 | get all montly data | `get` | http://localhost:3200/api/applMonthlyData/ | - |
 
+Returns
+* `format` `<string>`
+* `initialDataSet` `[][]` - Array of tuples
+    * `tuple[0]` `<number>` - epoch time of data (Unix Time, US Market Close)
+    * `tuple[1]` `<number>` - data value (In US Dollars)
+
 #### Published Testing with Postman:
 https://documenter.getpostman.com/view/4658545/RztmqU1B
 
