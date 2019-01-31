@@ -29,7 +29,6 @@ Returns
     * `tuple[0]` `<number>` - epoch time of data (Unix Time, US Market Close)
     * `tuple[1]` `<number>` - data value (In US Dollars)
 
-| Purpose | Request Type | Route | body |
 | --- | --- | --- | --- |
 | get single date data from initialDataSet | `get` | http://localhost:3200/api/applMonthlyClosingData/:date |
 
