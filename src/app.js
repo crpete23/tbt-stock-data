@@ -9,7 +9,7 @@ if (NODE_ENV === 'development') {
 app.use(require('body-parser').json())
 app.use(require('cors')())
 
-app.use('/api/applMonthlyData', require('./routes/applMonthlyData'))
+app.use('/api/applMonthlyClosingData', require('./routes/applMonthlyClosingData'))
 
 app.use('/', (req, res) => res.send({
   server:{
@@ -17,8 +17,8 @@ app.use('/', (req, res) => res.send({
     apiVersion: '0.2'
   },
   availableDataSeries: {
-  applMonthlyData: {
-    name: 'Monthly Apple Stock Data',
+  applMonthlyClosingData: {
+    name: 'Monthly Apple Stock Closing Data',
     description: 'Apple stock closing price data for the last month'
   }
 }

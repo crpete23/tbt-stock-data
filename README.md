@@ -17,11 +17,11 @@
 | --- | --- | --- | --- |
 | get microservice API information | `get` | http://localhost:3200/ | - |
 
-##### Apple Monthly Data routes
+##### Apple Monthly Closing Data routes
 
 | Purpose | Request Type | Route | body |
 | --- | --- | --- | --- |
-| get all montly data | `get` | http://localhost:3200/api/applMonthlyData/ | - |
+| get all montly data | `get` | http://localhost:3200/api/applMonthlyClosingData/ | - |
 
 Returns
 * `format` `<string>`

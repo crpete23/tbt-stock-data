@@ -1,4 +1,4 @@
-const model = require('../models/applMonthlyData')
+const model = require('../models/applMonthlyClosingData')
 const resourceName = 'initialDataSet'
 
 async function getAll(req, res, next){
