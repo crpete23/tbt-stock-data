@@ -11,6 +11,7 @@ let durationAbbrev = {
 let serverInfo = {
     server: {
         name: 'Stock Data',
+        description: 'Stock closing price data in US dollars',
         apiVersion: '0.2',
         baseURL: 'https://api.iextrading.com/1.0/stock/',
         attribution: {
