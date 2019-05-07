@@ -17,7 +17,7 @@ function checkSeries (req, res){
         return
     }
 
-    if(!cachedData[`${ticker}_${series}`]) {
+    if(!cachedData[`${ticker}_${duration}_${series}`]) {
         console.log(`Populate data series for ${ticker} (${duration} chart) from stocks API`)
         model.obtainMonthlyData(ticker, duration, series)
             .then((seriesData) => {
@@ -28,7 +28,7 @@ function checkSeries (req, res){
                 res.status(400).send(err)
             })
     } else {
-        res.json(cachedData[`${ticker}_${series}`].seriesData)
+        res.json(cachedData[`${ticker}_${duration}_${series}`].seriesData)
     }
 }
 

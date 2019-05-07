@@ -17,7 +17,7 @@ function obtainMonthlyData(ticker, duration, series) {
                 }
             }
 
-            cachedData[`${ticker}_${series}`] = cache
+            cachedData[`${ticker}_${duration}_${series}`] = cache
 
             if (series === 'stock'){
                 cache.seriesData.units.name = "Dollars"
