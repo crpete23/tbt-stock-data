@@ -1,28 +1,21 @@
 const express = require('express')
 const app = express()
-const { PORT = 3200, NODE_ENV = 'development' } = process.env
+const cors = require('cors')
+const ip = process.env.IP || 'localhost'
+const port = process.env.PORT || 3200
+const controller = require('./controller')
+const model = require('./model')
 
-if (NODE_ENV === 'development') {
-  app.use(require('morgan')('dev'))
-}
+app.use(cors())
 
-app.use(require('body-parser').json())
-app.use(require('cors')())
+// Sets up enviroment variables for config
+require('dotenv').config();
 
-app.use('/api/applMonthlyClosingData', require('./routes/applMonthlyClosingData'))
+// Defines attribution logo
+app.use('/logo.png', express.static(__dirname + '/logo.png'))
 
-app.use('/', (req, res) => res.send({
-  server:{
-    name: 'Coding Challenge Server',
-    apiVersion: '0.2'
-  },
-  availableDataSeries: {
-  applMonthlyClosingData: {
-    name: 'Monthly Apple Stock Closing Data',
-    description: 'Apple stock closing price data for the last month'
-  }
-}
-}))
+app.get('/', controller.baseRoute)
+app.get('/api/:series/:duration', controller.checkSeries)
 
 app.use((req, res, next) => {
   const status = 404
@@ -32,17 +25,15 @@ app.use((req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
-  if (NODE_ENV === 'development') console.error(err)
-
   const message = `Something went wrong.`
   const { status = 500, error = message } = err
-
   res.status(status).json({ status, error })
 })
 
-if (NODE_ENV !== 'testing') {
-  const listener = () => console.log(`Listening on port ${PORT}!`)
-  app.listen(PORT, listener)
-}
+app.listen(port, function() {
+  console.log(`App started running at ${ip}, port ${port}`)
+
+  setInterval(model.clearCache, 3600000)
+})
 
 module.exports = app
