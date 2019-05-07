@@ -15,7 +15,7 @@ require('dotenv').config();
 app.use('/logo.png', express.static(__dirname + '/logo.png'))
 
 app.get('/', controller.baseRoute)
-app.get('/api/:series/:duration', controller.checkSeries)
+app.get('/api/:series', controller.checkSeries)
 
 app.use((req, res, next) => {
   const status = 404
