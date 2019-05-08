@@ -1,8 +1,8 @@
 # tbt-stock-data API
 
 ## About
-  Tbt-stock-data-API formats stock closing data from the free https://iextrading.com/developer/docs/#getting-started API
-  into digestible time-series data (unix time, stock closing in USD)
+  Tbt-stock-data API formats stock closing data from the free https://iextrading.com/developer/docs/#getting-started API
+  into digestible time-series data (unix time, stock closing in USD). Acts as a wrapper for open-source project Tributary http://tributary.collineargroup.com/
 
 ### Description
   - Retrieve time-series data by providing a stock ticker and chart duration
