@@ -25,11 +25,11 @@ let serverInfo = {
             description: 'Stock closing price data for the last month',
             attributes: {
                 stock: {
-                    name: 'Stock',
+                    name: 'stock',
                     description: 'Recognized Stock Ticker ex. AAPL'
                 },
                 duration: {
-                    name: 'Chart',
+                    name: 'chart duration',
                     description: 'Chart Duration Length',
                     type: 'select-map',
                     values: durationAbbrev
