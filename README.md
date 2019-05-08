@@ -1,4 +1,4 @@
-# tbt-stock-data API
+# tbt-stock-data API 
 
 ## About
   Tbt-stock-data API formats stock closing data from the free https://iextrading.com/developer/docs/#getting-started API
