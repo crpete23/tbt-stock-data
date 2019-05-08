@@ -1,10 +1,11 @@
-# Collinear Coding Challenge Backend
+# tbt-stock-data API
 
 ## About
-  Collinear Coding Challenge Backend is a Microservice Starter, created as a solution to the Collinear Coding Challenge.
+  Tbt-stock-data-API formats stock closing data from the free https://iextrading.com/developer/docs/#getting-started API
+  into digestible time-series data (unix time, stock closing in USD)
 
 ### Description
-  - This Data Microservice API has one built out API with time-series data from Apple's monthly stock closing price
+  - Retrieve time-series data by providing a stock ticker and chart duration
 
 ### Routes
 
@@ -17,33 +18,18 @@
 | --- | --- | --- | --- |
 | get microservice API information | `get` | http://localhost:3200/ | - |
 
-##### Apple Monthly Closing Data routes
+##### Stock Closing Time-Series Data routes
 
-| Purpose | Request Type | Route | body |
-| --- | --- | --- | --- |
-| get all monthly data | `get` | http://localhost:3200/api/applMonthlyClosingData/ |
+| Purpose | Request Type | Route | body | queryParams |
+| --- | --- | --- | --- | --- |
+| get all time-series data | `get` | http://localhost:3200/api/stock/?stock=AAPL&duration=1m | - | stock (ticker, required), duration (1m, 3m, 6m, ytd, 1y, 2y, 5y, defaults to 1m) |
 
 Returns
 * `format` `<string>`
+* `units` `{}`
 * `initialDataSet` `[][]` - Array of tuples
     * `tuple[0]` `<number>` - epoch time of data (Unix Time, US Market Close)
     * `tuple[1]` `<number>` - data value (In US Dollars)
-
-| Purpose | Request Type | Route | body |
-| --- | --- | --- | --- |
-| get single date data from initialDataSet | `get` | http://localhost:3200/api/applMonthlyClosingData/:date |
-
-Format
-* :date formatted as YYYY-MM-DD
-
-Returns
-* `format` `<string>`
-* `data` `[][]` - tuple
-    * `tuple[0]` `<number>` - epoch time of data (Unix Time, US Market Close)
-    * `tuple[1]` `<number>` - data value (In US Dollars)
-
-#### Published Testing with Postman:
-https://documenter.getpostman.com/view/4658545/RztmqU1B
 
 ## Installation
 
