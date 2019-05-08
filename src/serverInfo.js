@@ -1,11 +1,11 @@
 let durationAbbrev = {
-    '1m':'1 month',
-    '3m':'3 months',
-    '6m':'6 months',
-    'ytd': 'year to date',
-    '1y': '1 year',
-    '2y': '2 years',
-    '5y': '5 years'
+    '01_1m':'1 month',
+    '02_3m':'3 months',
+    '03_6m':'6 months',
+    '04_ytd': 'year to date',
+    '05_1y': '1 year',
+    '06_2y': '2 years',
+    '07_5y': '5 years'
 }
 
 let serverInfo = {
