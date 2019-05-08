@@ -1,0 +1,15 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+deploy:
+  stage: deploy
+  services:
+    - docker:dind
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build --rm -t registry.gitlab.com/collinear/tributary/$CI_PROJECT_NAME:latest .
+    - docker push registry.gitlab.com/collinear/tributary/$CI_PROJECT_NAME:latest
+  only:
+    - master

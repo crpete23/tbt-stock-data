@@ -1,0 +1,43 @@
+# Will need to follow https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials
+#   to add a "regcred" secret to your kubectl context.
+# kubectl apply -f ./tbt-seattle-stock-data-deployment.yml
+# kubectl delete all -l app=tbt-seattle-stock-data
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: tbt-stock-data
+  name: tbt-stock-data
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tbt-stock-data
+    spec:
+      containers:
+        - image: registry.gitlab.com/collinear/tributary/tbt-stock-data
+          name: tbt-stock-data
+          ports:
+            # maps to port that is exposed in the Dockerfile
+            - containerPort: 3000
+              name: tbt-stock-data
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: tbt-stock-data
+  name: tbt-stock-data
+spec:
+  type: LoadBalancer
+  ports:
+    # maps localhost:port to containerPort
+    - port: 3005
+      targetPort: 3000
+  selector:
+    app: tbt-stock-data
