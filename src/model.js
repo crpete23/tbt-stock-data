@@ -36,12 +36,11 @@ function obtainMonthlyData(ticker, duration, series) {
         })
 }
 
-//Data from this web service is updated every hour on the hour. If the hour when the data was retrieved and the current hour do not match, then the data has been updated
-//and the cache should be cleared for those records.
+//Clears cached data point after a day because data is refreshed daily
 function clearCache() {
     let now = new Date();
     Object.keys(cachedData).forEach(key => {
-        let retrievedTimePlusDay = new Date(cachedData[key].retrievalTime.getTime() + 1 * 86400000)
+        let retrievedTimePlusDay = new Date(cachedData[key].retrievalTime.getTime() + 1 * 86400000) //1 day: 1000ms*60s*60min*24hours
         if (retrievedTimePlusDay < now) { //clears cachedData after one day to retrieve new data
             delete cachedData[key];
         }
