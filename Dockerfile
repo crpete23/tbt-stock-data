@@ -7,7 +7,7 @@ COPY ./package-lock.json /app
 
 # Install app dependencies
 RUN npm  install --prod
-COPY . /app
+COPY ./src /app
 EXPOSE 3000
 
 HEALTHCHECK CMD [ "wget", "localhost:3000" ]
