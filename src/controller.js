@@ -10,7 +10,7 @@ function baseRoute (req, res){
 function checkSeries (req, res){
     const series = req.params.series
     const ticker = req.query.stock
-    const duration = req.query.duration.split('_')[1] || '1m'
+    const duration = req.query.duration || '1m'
 
     if(!ticker){
         res.status(400).send({ errors: 'Stock ticker parameter is required.'})
