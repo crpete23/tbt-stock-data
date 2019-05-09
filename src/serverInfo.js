@@ -9,34 +9,39 @@ let durationAbbrev = [
 ]
 
 let serverInfo = {
-    server: {
-        name: 'Stock Data',
-        description: 'Stock closing price data in US dollars',
-        apiVersion: '0.2',
-        baseURL: 'https://api.iextrading.com/1.0/stock/',
-        attribution: {
-            logo: '/logo.png',
-            link: 'https://iextrading.com/developer/docs/#getting-started'
-        }
-    },
-    availableDataSeries: {
-        stock: {
-            name: 'Closing Prices',
-            description: 'Stock closing price data',
-            attributes: {
-                stock: {
-                    name: 'stock',
-                    description: 'Recognized Stock Ticker ex. AAPL'
-                },
-                duration: {
-                    name: 'chart duration',
-                    description: 'Chart Duration Length',
-                    type: 'select-map',
-                    values: durationAbbrev
+    id: "stock-data",
+    meta: {
+        server: {
+            name: 'Stock Data',
+            description: 'Stock closing price data in US dollars',
+            apiVersion: '0.2',
+            baseURL: 'https://api.iextrading.com/1.0/stock/',
+            attribution: {
+                logo: '/logo.png',
+                link: 'https://iextrading.com/developer/docs/#getting-started'
+            }
+        },
+        availableDataSeries: {
+            stock: {
+                name: 'Closing Prices',
+                description: 'Stock closing price data',
+                attributes: {
+                    stock: {
+                        name: 'stock',
+                        description: 'Recognized Stock Ticker ex. AAPL'
+                    },
+                    duration: {
+                        name: 'chart duration',
+                        description: 'Chart Duration Length',
+                        type: 'select-map',
+                        values: durationAbbrev
+                    }
                 }
             }
         }
-    }
+    },
+    serviceUrl: "http://tributary.collineargroup.com:3011",
+    status: {}
 }
 
 module.exports = {

@@ -1,8 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const ip = process.env.IP || 'localhost'
-const port = process.env.PORT || 3000
+const port = 3000
 const controller = require('./controller')
 const model = require('./model')
 
@@ -27,12 +26,12 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   const message = `Something went wrong.`
   const { status = 500, error = message } = err
-  console.log(status, error)
+  console.log(err)
   res.status(status).json({ status, error })
 })
 
 app.listen(port, function() {
-  console.log(`App started running at ${ip}, port ${port}`)
+  console.log(`App started running on port ${port}`)
   setInterval(model.clearCache, 3600000)
 })
 
