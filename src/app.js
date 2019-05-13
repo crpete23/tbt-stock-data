@@ -7,9 +7,6 @@ const model = require('./model')
 
 app.use(cors())
 
-// Sets up enviroment variables for config
-require('dotenv').config();
-
 // Defines attribution logo
 app.use('/logo.png', express.static(__dirname + '/logo.png'))
 
