@@ -1,8 +1,9 @@
-# tbt-stock-data API
+# tbt-stock-data API 
 
 ## About
   Tbt-stock-data API formats stock closing data from the free https://iextrading.com/developer/docs/#getting-started API
   into digestible time-series data (unix time, stock closing in USD). Acts as a wrapper for open-source project Tributary http://tributary.collineargroup.com/
+  Live site is running on http://tributary.collineargroup.com:3011
 
 ### Description
   - Retrieve time-series data by providing a stock ticker and chart duration
@@ -16,13 +17,13 @@
 
 | Purpose | Request Type | Route | body |
 | --- | --- | --- | --- |
-| get microservice API information | `get` | http://localhost:3200/ | - |
+| get microservice API information | `get` | http://tributary.collineargroup.com:3011 | - |
 
 ##### Stock Closing Time-Series Data routes
 
 | Purpose | Request Type | Route | body | queryParams |
 | --- | --- | --- | --- | --- |
-| get all time-series data | `get` | http://localhost:3200/api/stock/?stock=AAPL&duration=1m | - | stock (ticker, required), duration (1m, 3m, 6m, ytd, 1y, 2y, 5y, defaults to 1m) |
+| get all time-series data | `get` | http://tributary.collineargroup.com:3011/api/stock/?stock=AAPL&duration=1m | - | stock (ticker, required), duration (1m, 3m, 6m, ytd, 1y, 2y, 5y) |
 
 Returns
 * `format` `<string>`
