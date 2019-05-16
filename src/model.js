@@ -1,6 +1,11 @@
 const axios = require('axios');
-let serverInfo = require('./serverInfo').serverInfo;
-let cachedData = {};
+let cachedData = {}
+
+function getTickerCompanyData(ticker){
+    let url = `https://api.iextrading.com/1.0/stock/${ticker}/company`
+    console.log(`validating ticker by requesting data from stock api: ${url}`)
+    return axios.get(url)
+}
 
 function obtainMonthlyData(ticker, duration, series) {
     let url = `https://api.iextrading.com/1.0/stock/${ticker}/chart/${duration}`
@@ -50,5 +55,6 @@ function clearCache() {
 module.exports = {
     cachedData,
     clearCache,
+    getTickerCompanyData,
     obtainMonthlyData
 };
